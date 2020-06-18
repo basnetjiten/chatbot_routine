@@ -63,7 +63,8 @@
                 <div class="card">
                     <div class="card-header p-2">
                         <ul class="nav nav-pills">
-                            <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab">Activity</a>
+                            <li class="nav-item"><a class="nav-link" href="#activity" data-toggle="tab">Donation
+                                Link</a>
                             </li>
                             <li class="nav-item"><a class="nav-link active show" href="#settings" data-toggle="tab">Settings</a>
                             </li>
@@ -73,7 +74,44 @@
                         <div class="tab-content">
                             <!-- Activity Tab -->
                             <div class="tab-pane" id="activity">
-                                <h3 class="text-center">Display User Activity</h3>
+                                <div v-cloak class="mt-4">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-control wizard-form-control d-flex align-items-center testing-code px-20px mb-10px">
+                                                    <span class="title">Alert Link:</span>
+                                                    <span class="code text-red">https://streamersalert.com/alert/{{this.form.token}}</span>
+                                                    <span class="btn btn-info text-white copy-btn ml-auto"
+                                                          @click.stop.prevent="copyAlertLink">
+              Copy
+            </span>
+                                                    <input type="hidden" id="alert-link" :value="getMyAlertLink()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div v-cloak class="mt-5">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <div class="form-control wizard-form-control d-flex align-items-center testing-code px-20px mb-10px">
+                                                    <span class="title">Donation Link:</span>
+                                                    <span class="code text-red">https://streamersalert.com/r/{{this.form.username}}</span>
+                                                    <span class="btn btn-info text-white copy-btn ml-auto"
+                                                          @click.stop.prevent="copyDonationLink">
+              Copy
+            </span>
+                                                    <input type="hidden" id="donation-link" :value="getDonationLink()">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                             </div>
                             <!-- Setting Tab -->
                             <div class="tab-pane active show" id="settings">
@@ -159,6 +197,8 @@
     export default {
         data() {
             return {
+                donationLink: '',
+                streamersAlertLink: '',
                 form: new Form({
                     id: '',
                     username: '',
@@ -166,8 +206,10 @@
                     password: '',
                     type: '',
                     bio: '',
-                    photo: ''
-                })
+                    photo: '',
+                    token:''
+                }),
+
             }
         },
         mounted() {
@@ -176,6 +218,14 @@
         },
 
         methods: {
+            getDonationLink(){
+                this.donationLink = 'https://streamersalert.com/r/'+this.form.username;
+                return this.donationLink;
+            },
+            getMyAlertLink(){
+                this.streamersAlertLink = 'https://streamersalert.com/alert/'+this.form.token;
+                return this.streamersAlertLink;
+            },
 
             getProfilePhoto() {
 
@@ -215,7 +265,29 @@
                     this.form.photo = reader.result;
                 }
                 reader.readAsDataURL(file);
-            }
+            },
+
+            copyDonationLink() {
+                let testingCodeToCopy = document.querySelector('#donation-link');
+                testingCodeToCopy.setAttribute('type', 'text');  // 不是 hidden 才能複製
+                testingCodeToCopy.select();
+                document.execCommand('copy');
+
+                /* unselect the range */
+                testingCodeToCopy.setAttribute('type', 'hidden');
+                window.getSelection().removeAllRanges()
+            },
+
+            copyAlertLink() {
+                let testingCodeToCopy = document.querySelector('#alert-link');
+                testingCodeToCopy.setAttribute('type', 'text');  // 不是 hidden 才能複製
+                testingCodeToCopy.select();
+                document.execCommand('copy');
+
+                /* unselect the range */
+                testingCodeToCopy.setAttribute('type', 'hidden');
+                window.getSelection().removeAllRanges()
+            },
         },
 
         created() {

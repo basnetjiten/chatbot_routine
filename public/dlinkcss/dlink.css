@@ -1,0 +1,82 @@
+[v-cloak] {
+  display: none;
+}
+
+.testing-code .title {
+  line-height: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  color: gray;
+  margin-right: 6px;
+}
+
+.testing-code .code {
+  line-height: 24px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.testing-code .copy-btn {
+  padding: 0;
+  width: 88px;
+  height: 30px;
+  line-height: 26px;
+  border-radius: 50px;
+}
+
+ul.tester-email-list {
+  background-color: white;
+  border: solid 1px #DDDDDD;
+  height: 150px;
+  padding: 15px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+ul.tester-email-list li.label {
+  border: 1px solid #DDDDDD;
+  background-color: whitegray;
+  padding: 0.3rem;
+  height: 24px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+ul.tester-email-list li.label span {
+  padding: 0 3px;
+  height: 14px;
+  line-height: 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: gray;
+}
+
+ul.tester-email-list li.label i {
+  color: #999999;
+  height: 14px;
+  line-height: 14px;
+  cursor: pointer;
+}
+
+ul.tester-email-list input.tester-email-input {
+  border: none;
+  display: inline-block;
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: gray;
+}
+
+ul.tester-email-list input.tester-email-input:focus {
+  outline: none;
+}
+

@@ -13,4 +13,5 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
-   .sass('resources/assets/alertscss/alert.scss', 'public/alertcss');
+   .sass('resources/assets/alertscss/alert.scss', 'public/alertcss')
+   .sass('resources/assets/dlinkscss/dlink.scss', 'public/dlinkcss');
