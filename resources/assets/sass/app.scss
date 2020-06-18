@@ -1,0 +1,57 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+$fa-font-path: "../webfonts";
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@import '~admin-lte/dist/css/adminlte.css';
+@import '~admin-lte/plugins/fontawesome-free/css/all.css';
+/*
+@import '~@fortawesome/fontawesome-free/scss/regular.scss';
+*/
+/*
+@import '~augmented-ui/augmented.css';
+*/
+
+
+/*@import '~animate.css/animate.css';*/
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+/*.router-link-exact-active{
+    background-color: #007bff;
+    color:#fff !important;
+}*/
+
+.router-link-exact-active {
+  @extend .active;
+}
+
+
+@media print {
+    .nav.nav-tabs li:not(.active){
+        display: none;
+    }
+    .invoice{
+    	padding: 10px 20px;
+    }
+
+    .invoice{
+		background-position: center center;
+		background-repeat: no-repeat;
+
+	}
+	.table-responsive table{
+		background-color: transparent !important;
+	}
+
+}
+
+@page {
+    margin: 0;
+}
