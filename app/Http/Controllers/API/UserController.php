@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Charts\UserLineChart;
-use App\Models\Transaction;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Str;
 
 
 class UserController extends Controller
@@ -49,19 +45,19 @@ class UserController extends Controller
     {
 
         $this->validate($request, [
-            'username' => 'required|string|max:191',
+            'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users',
             'password' => 'required|string|min:6'
         ]);
 
         $user = User::create([
-            'username' => $request['username'],
+            'name' => $request['name'],
             'email' => $request['email'],
             'type' => $request['type'],
             'bio' => $request['bio'],
-            'photo' => $request['photo'],
+            'photo' => 'photo.png',
             'password' => Hash::make($request['password']),
-            'token' => Str::orderedUuid(),
+
         ]);
 
 
@@ -74,7 +70,7 @@ class UserController extends Controller
 
 
         $this->validate($request, [
-            'username' => 'required|string|max:191',
+            'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users,email,' . $user->id,
             'password' => 'sometimes|required|min:6'
         ]);
@@ -136,7 +132,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
 
         $this->validate($request, [
-            'username' => 'required|string|max:191',
+            'name' => 'required|string|max:191',
             'email' => 'required|string|email|max:191|unique:users,email,' . $user->id,
             'password' => 'sometimes|min:6'
         ]);

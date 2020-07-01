@@ -16,21 +16,15 @@ class UsersTableSeeder extends Seeder
     {
 
         DB::table('users')->insert([
-            'username' => 'gunjandigital',
-            'email' => 'gunjandigital@gmail.com',
-            'password' => bcrypt('123Yougofree'),
+            'name' => 'Dipesh Chaudhary',
+            'email' => 'uchichadips112@gmail.com',
+            'password' => bcrypt('12345678'),
             'type' => 'admin',
             'bio' => '',
             'photo' => '',
-            // 'password' => Hash::make($request['password']),
-            'token' => Str::orderedUuid(),
-        ]);
-        DB::table('streamers')->insert([
-            'alert_link' => Str::orderedUuid(),
-            'user_id' => 1,
-            'status' => 'registered'
 
         ]);
+
 
     }
 

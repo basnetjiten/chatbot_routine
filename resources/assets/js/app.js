@@ -7,15 +7,14 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
-
+window.moment = require('moment');
 
 import moment from 'moment';
 import {Form, HasError, AlertError} from 'vform';
 
 import Gate from "./Gate";
 
-Vue.prototype.$gate = new Gate(window.usertype);
-
+Vue.prototype.$gate = new Gate(window.user.type);
 
 import swal from 'sweetalert2'
 
@@ -37,11 +36,10 @@ Vue.component(AlertError.name, AlertError);
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 
-import VueKhalti from 'vue-khalti'
 import VueRouter from 'vue-router'
-
+import VueChatScroll from 'vue-chat-scroll'
+Vue.use(VueChatScroll);
 Vue.use(VueRouter);
-Vue.use(VueKhalti);
 import VueProgressBar from 'vue-progressbar'
 
 Vue.use(VueProgressBar, {
@@ -52,13 +50,13 @@ Vue.use(VueProgressBar, {
 
 let routes = [
 
-    {path: '/dashboard', component: require('./components/Dashboard.vue').default},
-    {path: '/developer', component: require('./components/Developer.vue').default},
+    {path: '/dashboard',component: require('./components/Dashboard.vue').default},
+    {path: '/message', name: 'message',props:true,component: require('./components/InboxMessage.vue').default},
+    {path: '/home',component: require('./components/Dashboard.vue').default},
+
     {path: '/users', component: require('./components/Users.vue').default},
-    {path: '/profile', component: require('./components/Profile.vue').default},
-    {path: '/home', component: require('./components/Dashboard.vue').default},
+    {path: '/routine', component: require('./components/Routine.vue').default},
     {path: '*', component: require('./components/NotFound.vue').default},
-    {path: '/khalti-payment', name: 'khalti', component: require('./components/App.vue').default},
     {path: '/test', name: 'test', component: require('./components/Test.vue').default},
 
 ];
@@ -106,15 +104,7 @@ Vue.component(
     'not-found',
     require('./components/NotFound.vue').default);
 
-Vue.component('welcome-component', require('./components/Welcome.vue').default);
-Vue.component('donationalert-component', require('./components/DonationAlert.vue').default);
-Vue.component('khalti-demo', require('./components/KhaltiDemo.vue').default);
-Vue.component('app-vue', require('./components/App.vue').default);
-/*
-if (window.__INITIAL_STATE__ != null) {
-    let userData = JSON.stringify(window.__INITIAL_STATE__);
-    window.users = JSON.parse(userData);
-}*/
+
 
 
 const app = new Vue({

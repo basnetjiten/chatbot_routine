@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'email', 'password', 'bio', 'photo','type','token'
+        'name', 'email', 'password', 'bio', 'photo', 'type',
     ];
 
     /**
@@ -28,13 +28,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function transaction()
+
+
+    public function messages()
     {
-        return $this->hasOne('App\Models\Transaction','streamer_id');
+
+        return $this->hasMany(Chat::class);
+
     }
 
-    public function streamer()
-    {
-        return $this->hasOne('App\User','user_id');
-    }
+
 }

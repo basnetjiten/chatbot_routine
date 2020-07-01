@@ -24,10 +24,10 @@
                   </tr>
 
 
-                  <tr v-for="user in users.data" :key="user.id">
+                  <tr v-if="(users)" v-for="(user,index) in (users.data)"  :key="user.id">
 
-                    <td>{{user.id}}</td>
-                    <td>{{user.username}}</td>
+                    <td>{{index+1}}</td>
+                    <td>{{user.name}}</td>
                     <td>{{user.email}}</td>
                     <td>{{user.type | upText}}</td>
                     <td>{{user.created_at | myDate}}</td>
@@ -97,8 +97,8 @@
                         <select name="type" v-model="form.type" id="type" class="form-control" :class="{ 'is-invalid': form.errors.has('type') }">
                             <option value="">Select User Role</option>
                             <option value="admin">Admin</option>
-                            <option value="user">Standard User</option>
-                            <option value="author">Author</option>
+                            <option value="user">Student</option>
+
                         </select>
                         <has-error :form="form" field="type"></has-error>
                     </div>
@@ -134,7 +134,7 @@
         data() {
             return {
                 editmode: false,
-                users : {},
+                users :{},
                 form: new Form({
                     id:'',
                     username : '',
@@ -227,7 +227,7 @@
 
                     toast({
                         type: 'success',
-                        title: 'User Created in successfully'
+                        title: 'Routine Created successfully'
                         });
                     this.$Progress.finish();
 

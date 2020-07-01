@@ -2,267 +2,441 @@
 <html lang="en">
 
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="UTF-8">
     <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- CSRF Token -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *Must* come first in the head; any other head content must come *after* these tags -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Landing Page - Start Bootstrap Theme</title>
+    <!-- Title -->
+    <title>Islington Education &amp; Courses Template | Home</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="/landing_page/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="icon" href="college/img/core-img/favicon.ico">
 
-    <!-- Custom fonts for this template -->
-    <link href="/landing_page/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="/landing_page/vendor/simple-line-icons/css/simple-line-icons.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet"
-          type="text/css">
-
-    <!-- Custom styles for this template -->
-    <link href="/landing_page/css/landing-page.min.css" rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="college/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 </head>
 
 <body>
+
 <div id="app">
-    <!-- Navigation -->
-    <nav class="navbar navbar-light bg-light static-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">StreamersAlert</a>
-            @if (Route::has('login'))
-
-                @if (Auth::check())
-                    <a href="{{ route('home') }}">Home</a>
-                @else
-                    <a class="btn btn-primary"
-                       data-toggle="modal" data-target="#loginModal" href="#">Sign In</a>
-
-                @endif
-
-            @endif
 
 
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+
+    <!-- Top Header Area -->
+    <div class="top-header-area d-flex justify-content-between align-items-center">
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <a href="#"><span>Phone:</span> +44 300 303 0266</a>
+            <a href="#"><span>Email:</span> info@clever.com</a>
         </div>
-    </nav>
+        <!-- Follow Us -->
+        <div class="follow-us">
+            <span>Follow us</span>
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+    </div>
 
-    <!-- Masthead -->
-    <header class="masthead text-white text-center">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <h1 class="mb-5">Strengthening Viewers and Streamers bonding forever. </h1>
+    <!-- Navbar Area -->
+    <div class="clever-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+            <!-- Menu -->
+            <nav class="classy-navbar justify-content-between" id="cleverNav">
+
+                <!-- Logo -->
+                <a class="nav-brand" href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+
+                <!-- Navbar Toggler -->
+                <div class="classy-navbar-toggler">
+                    <span class="navbarToggler"><span></span><span></span><span></span></span>
                 </div>
-                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form>
-                        <div class="form-row">
-                            {{--<div class="col-12 col-md-9 mb-2 mb-md-0">
-                                <input type="email" class="form-control form-control-lg" placeholder="Enter your email...">
-                            </div>--}}
-                            <div class="col-12  mb-2 mb-md-0">
-                                <a style="text-decoration: none;" href="#"><input type="button"
-                                                                                  class="btn btn-block btn-lg btn-primary"
-                                                                                  data-toggle="modal"
-                                                                                  data-target="#registerModal"
-                                                                                  value="Connect Now"></a>
+
+                <!-- Menu -->
+                <div class="classy-menu">
+
+                    <!-- Close Button -->
+                    <div class="classycloseIcon">
+                        <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                    </div>
+
+                    <!-- Nav Start -->
+                    <div class="classynav">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#">Pages</a>
+                                <ul class="dropdown">
+                                    <li><a href="">Home</a></li>
+                                    <li><a href="#">Courses</a></li>
+
+                                </ul>
+                            </li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Instructors</a></li>
+                            <li><a href="#">Blog</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+
+                        <!-- Search Button -->
+                        <div class="search-area">
+                            <form action="#" method="post">
+                                <input type="search" name="search" id="search" placeholder="Search">
+                                <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                            </form>
+                        </div>
+
+                        <!-- Register / Login -->
+                        <div class="register-login-area">
+                            <a class="btn" data-toggle="modal"
+                               data-target="#registerModal" href="#">Register</a>
+
+                            @if (Route::has('login'))
+
+                                @if (Auth::check())
+                                    <a href="{{ route('home') }}">Home</a>
+                                @else
+                                    <a class="btn"
+                                       data-toggle="modal" data-target="#loginModal" href="#">Login</a>
+
+                                @endif
+
+                            @endif
+
+
+                        </div>
+
+                    </div>
+                    <!-- Nav End -->
+                </div>
+            </nav>
+        </div>
+    </div>
+</header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Hero Area Start ##### -->
+<section class="hero-area bg-img bg-overlay-2by5" style="background-image: url(college/img/bg-img/bg1.jpg);">
+    <div class="container h-100">
+        <div class="row h-100 align-items-center">
+            <div class="col-12">
+                <!-- Hero Content -->
+                <div class="hero-content text-center">
+                    <h2>Let's Study Together</h2>
+                    <a href="#" class="btn clever-btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Hero Area End ##### -->
+
+<!-- ##### Cool Facts Area Start ##### -->
+<section class="cool-facts-area section-padding-100-0">
+    <div class="container">
+        <div class="row">
+            <!-- Single Cool Facts Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-cool-facts-area text-center mb-100 wow fadeInUp" data-wow-delay="250ms">
+                    <div class="icon">
+                        <img src="college/img/core-img/docs.png" alt="">
+                    </div>
+                    <h2><span class="counter">1912</span></h2>
+                    <h5>Success Stories</h5>
+                </div>
+            </div>
+
+            <!-- Single Cool Facts Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-cool-facts-area text-center mb-100 wow fadeInUp" data-wow-delay="500ms">
+                    <div class="icon">
+                        <img src="college/img/core-img/star.png" alt="">
+                    </div>
+                    <h2><span class="counter">123</span></h2>
+                    <h5>Dedicated Tutors</h5>
+                </div>
+            </div>
+
+            <!-- Single Cool Facts Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-cool-facts-area text-center mb-100 wow fadeInUp" data-wow-delay="750ms">
+                    <div class="icon">
+                        <img src="college/img/core-img/events.png" alt="">
+                    </div>
+                    <h2><span class="counter">89</span></h2>
+                    <h5>Scheduled Events</h5>
+                </div>
+            </div>
+
+            <!-- Single Cool Facts Area -->
+            <div class="col-12 col-sm-6 col-lg-3">
+                <div class="single-cool-facts-area text-center mb-100 wow fadeInUp" data-wow-delay="1000ms">
+                    <div class="icon">
+                        <img src="college/img/core-img/earth.png" alt="">
+                    </div>
+                    <h2><span class="counter">56</span></h2>
+                    <h5>Available Courses</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Cool Facts Area End ##### -->
+
+<!-- ##### Popular Courses Start ##### -->
+<section class="popular-courses-area section-padding-100-0" style="background-image: url(img/core-img/texture.png);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h3>Popular Online Courses</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Single Popular Course -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="250ms">
+                    <img src="img/bg-img/c1.jpg" alt="">
+                    <!-- Course Content -->
+                    <div class="course-content">
+                        <h4>English Grammar</h4>
+                        <div class="meta d-flex align-items-center">
+                            <a href="#">Sarah Parker</a>
+                            <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            <a href="#">Art &amp; Design</a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus
+                            in, sagittis</p>
+                    </div>
+                    <!-- Seat Rating Fee -->
+                    <div class="seat-rating-fee d-flex justify-content-between">
+                        <div class="seat-rating h-100 d-flex align-items-center">
+                            <div class="seat">
+                                <i class="fa fa-user" aria-hidden="true"></i> 10
+                            </div>
+                            <div class="rating">
+                                <i class="fa fa-star" aria-hidden="true"></i> 4.5
                             </div>
                         </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Icons Grid -->
-    <section class="features-icons bg-light text-center">
-        <div class="container">
-            <div class="row">
-
-                <div class="col-lg-4">
-                    <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-                        <div class="features-icons-icon d-flex">
-                            <i class="icon-check m-auto text-primary"></i>
+                        <div class="course-fee h-100">
+                            <a href="#" class="free">Free</a>
                         </div>
-                        <h3>Secure Payment</h3>
-                        <p class="lead mb-0">Integrated with well known secured payment Gateway.</p>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                        <div class="features-icons-icon d-flex">
-                            <i class="icon-graph m-auto text-primary"></i>
+            </div>
+
+            <!-- Single Popular Course -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="500ms">
+                    <img src="img/bg-img/c2.jpg" alt="">
+                    <!-- Course Content -->
+                    <div class="course-content">
+                        <h4>Vocabulary</h4>
+                        <div class="meta d-flex align-items-center">
+                            <a href="#">Sarah Parker</a>
+                            <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            <a href="#">Art &amp; Design</a>
                         </div>
-                        <h3>Rich Analytics</h3>
-                        <p class="lead mb-0">Monitor your viewers support on various Statistics</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus
+                            in, sagittis</p>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-                        <div class="features-icons-icon d-flex">
-                            <i class="icon-settings m-auto text-primary"></i>
-                        </div>
-                        <h3>24/7 Supports</h3>
-                        <p class="lead mb-0">We are one call away from helping with technical supports</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Image Showcases -->
-    <section class="showcase">
-        <div class="container-fluid p-0">
-            <div class="row no-gutters">
-
-                <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                     style="background-image: url('/landing_page/img/bg-showcase-1.jpg');"></div>
-                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                    <h2>Fully Responsive Design</h2>
-                    <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will
-                        look
-                        great on any device, whether it's a phone, tablet, or desktop the page will behave
-                        responsively!</p>
-                </div>
-            </div>
-            <div class="row no-gutters">
-                <div class="col-lg-6 text-white showcase-img"
-                     style="background-image: url('/landing_page/img/bg-showcase-2.jpg');"></div>
-                <div class="col-lg-6 my-auto showcase-text">
-                    <h2>Updated For Bootstrap 4</h2>
-                    <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 4 is leading the
-                        way
-                        in mobile responsive web development! All of the themes on Start Bootstrap are now using
-                        Bootstrap
-                        4!</p>
-                </div>
-            </div>
-            <div class="row no-gutters">
-                <div class="col-lg-6 order-lg-2 text-white showcase-img"
-                     style="background-image: url('/landing_page/img/bg-showcase-3.jpg');"></div>
-                <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-                    <h2>Easy to Use &amp; Customize</h2>
-                    <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand
-                        some
-                        deeper customization options. Out of the box, just add your content and images, and your new
-                        landing
-                        page will be ready to go!</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="testimonials text-center bg-light">
-        <div class="container">
-            <h2 class="mb-5">What people are saying...</h2>
-            <div class="row">
-                <div class="col-lg-4">
-                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                        <img class="img-fluid rounded-circle mb-3" src="/landing_page/img/testimonials-1.jpg" alt="">
-                        <h5>Margaret E.</h5>
-                        <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                        <img class="img-fluid rounded-circle mb-3" src="/landing_page/img/testimonials-2.jpg" alt="">
-                        <h5>Fred S.</h5>
-                        <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of
-                            super
-                            nice landing pages."</p>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="testimonial-item mx-auto mb-5 mb-lg-0">
-                        <img class="img-fluid rounded-circle mb-3" src="/landing_page/img/testimonials-3.jpg" alt="">
-                        <h5>Sarah W.</h5>
-                        <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to
-                            us!"</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Call to Action -->
-    <section class="call-to-action text-white text-center">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-9 mx-auto">
-                    <h2 class="mb-4">Ready to get Connected? Sign up now!</h2>
-                </div>
-                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-                    <form>
-                        <div class="form-row">
-                            <div class="col-12 col-md-9 mb-2 mb-md-0">
-                                <input type="email" class="form-control form-control-lg"
-                                       placeholder="Enter your email...">
+                    <!-- Seat Rating Fee -->
+                    <div class="seat-rating-fee d-flex justify-content-between">
+                        <div class="seat-rating h-100 d-flex align-items-center">
+                            <div class="seat">
+                                <i class="fa fa-user" aria-hidden="true"></i> 10
                             </div>
-                            <div class="col-12 col-md-3">
-                                <a href="#"><input type="button"
-                                                   class="btn btn-block btn-lg btn-primary"
-                                                   data-toggle="modal" data-target="#registerModal"
-                                                   value="Sign up!"></a>
-
+                            <div class="rating">
+                                <i class="fa fa-star" aria-hidden="true"></i> 4.5
                             </div>
                         </div>
-                    </form>
+                        <div class="course-fee h-100">
+                            <a href="#">$20</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Popular Course -->
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="single-popular-course mb-100 wow fadeInUp" data-wow-delay="750ms">
+                    <img src="img/bg-img/c3.jpg" alt="">
+                    <!-- Course Content -->
+                    <div class="course-content">
+                        <h4>Expository writing</h4>
+                        <div class="meta d-flex align-items-center">
+                            <a href="#">Sarah Parker</a>
+                            <span><i class="fa fa-circle" aria-hidden="true"></i></span>
+                            <a href="#">Art &amp; Design</a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce enim nulla, mollis eu metus
+                            in, sagittis</p>
+                    </div>
+                    <!-- Seat Rating Fee -->
+                    <div class="seat-rating-fee d-flex justify-content-between">
+                        <div class="seat-rating h-100 d-flex align-items-center">
+                            <div class="seat">
+                                <i class="fa fa-user" aria-hidden="true"></i> 10
+                            </div>
+                            <div class="rating">
+                                <i class="fa fa-star" aria-hidden="true"></i> 4.5
+                            </div>
+                        </div>
+                        <div class="course-fee h-100">
+                            <a href="#">$45</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+<!-- ##### Popular Courses End ##### -->
 
-    <!-- Footer -->
-    <footer class="footer bg-light">
+<!-- ##### Best Tutors Start ##### -->
+<section class="best-tutors-area section-padding-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-heading">
+                    <h3>The Best Tutors in Town</h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="tutors-slide owl-carousel wow fadeInUp" data-wow-delay="250ms">
+
+                    <!-- Single Tutors Slide -->
+                    <div class="single-tutors-slides">
+                        <!-- Tutor Thumbnail -->
+                        <div class="tutor-thumbnail">
+                            <img src="college/img/bg-img/t1.png" alt="">
+                        </div>
+                        <!-- Tutor Information -->
+                        <div class="tutor-information text-center">
+                            <h5>Alex Parker</h5>
+                            <span>Teacher</span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum laoreet elit,
+                                sit amet tincidunt mauris ultrices vitae.</p>
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Tutors Slide -->
+                    <div class="single-tutors-slides">
+                        <!-- Tutor Thumbnail -->
+                        <div class="tutor-thumbnail">
+                            <img src="college/img/bg-img/t2.png" alt="">
+                        </div>
+                        <!-- Tutor Information -->
+                        <div class="tutor-information text-center">
+                            <h5>Alex Parker</h5>
+                            <span>Teacher</span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum laoreet elit,
+                                sit amet tincidunt mauris ultrices vitae.</p>
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Tutors Slide -->
+                    <div class="single-tutors-slides">
+                        <!-- Tutor Thumbnail -->
+                        <div class="tutor-thumbnail">
+                            <img src="college/img/bg-img/t3.png" alt="">
+                        </div>
+                        <!-- Tutor Information -->
+                        <div class="tutor-information text-center">
+                            <h5>Alex Parker</h5>
+                            <span>Teacher</span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum laoreet elit,
+                                sit amet tincidunt mauris ultrices vitae.</p>
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Single Tutors Slide -->
+                    <div class="single-tutors-slides">
+                        <!-- Tutor Thumbnail -->
+                        <div class="tutor-thumbnail">
+                            <img src="college/img/bg-img/t4.png" alt="">
+                        </div>
+                        <!-- Tutor Information -->
+                        <div class="tutor-information text-center">
+                            <h5>Alex Parker</h5>
+                            <span>Teacher</span>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum laoreet elit,
+                                sit amet tincidunt mauris ultrices vitae.</p>
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ##### Best Tutors End ##### -->
+
+
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area">
+    <!-- Top Footer Area -->
+    <div class="top-footer-area">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
-                    <ul class="list-inline mb-2">
-                        <li class="list-inline-item">
-                            <a href="#">About</a>
-                        </li>
-                        <li class="list-inline-item">&sdot;</li>
-                        <li class="list-inline-item">
-                            <a href="#">Contact</a>
-                        </li>
-                        <li class="list-inline-item">&sdot;</li>
-                        <li class="list-inline-item">
-                            <a href="#">Terms of Use</a>
-                        </li>
-                        <li class="list-inline-item">&sdot;</li>
-                        <li class="list-inline-item">
-                            <a href="#">Privacy Policy</a>
-                        </li>
-                    </ul>
-                    <p class="text-muted small mb-4 mb-lg-0">&copy; StreamersAlert 2020. All Rights Reserved.</p>
-                </div>
-                <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item mr-3">
-                            <a href="#">
-                                <i class="fab fa-facebook fa-2x fa-fw"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item mr-3">
-                            <a href="#">
-                                <i class="fab fa-twitter-square fa-2x fa-fw"></i>
-                            </a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a href="#">
-                                <i class="fab fa-instagram fa-2x fa-fw"></i>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-12">
+                    <!-- Footer Logo -->
+                    <div class="footer-logo">
+                        <a href="college/index.html"><img src="img/core-img/logo2.png" alt=""></a>
+                    </div>
+
+                    <p><a href="#">
+                            Copyright &copy; All rights reserved </a>
                 </div>
             </div>
         </div>
-    </footer>
+    </div>
 
+    <!-- Bottom Footer Area -->
+    <div class="bottom-footer-area d-flex justify-content-between align-items-center">
+        <!-- Contact Info -->
+        <div class="contact-info">
+            <a href="#"><span>Phone:</span> +44 300 303 0266</a>
+            <a href="#"><span>Email:</span> info@clever.com</a>
+        </div>
+        <!-- Follow Us -->
+        <div class="follow-us">
+            <span>Follow us</span>
+            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+        </div>
+    </div>
+</footer>
     <main class="py-4">
         @yield('content')
     </main>
@@ -272,14 +446,22 @@
 
 <script src="{{ asset('js/app.js') }}" defer></script>
 @yield('scripts')
+<!-- ##### Footer Area End ##### -->
 
-<!-- Bootstrap core JavaScript -->
-<script src="/landing_page/vendor/jquery/jquery.min.js"></script>
-<script src="/landing_page/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ##### All Javascript Script ##### -->
+<!-- jQuery-2.2.4 js -->
+<script src="college/js/jquery/jquery-2.2.4.min.js"></script>
+<!-- Popper js -->
+<script src="college/js/bootstrap/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="college/js/bootstrap/bootstrap.min.js"></script>
+<!-- All Plugins js -->
+<script src="college/js/plugins/plugins.js"></script>
+<!-- Active js -->
+<script src="college/js/active.js"></script>
+
 
 </body>
 
 </html>
-
-
 

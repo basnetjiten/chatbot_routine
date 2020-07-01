@@ -1,25 +1,28 @@
 export default class Gate{
 
-    constructor(usertype){
-        this.usertype = usertype;
+    constructor(type){
+        this.type = type;
     }
 
+    isStudent(){
 
+        return this.type === 'student';
+    }
     isAdmin(){
-        return this.usertype === 'admin';
+        return this.type === 'admin';
     }
 
-    isUser(){
-        return this.usertype === 'streamer';
-    }
+
+
+
     isAdminOrAuthor(){
-        if(this.usertype === 'admin' || this.usertype === 'author'){
+        if(this.type === 'admin' || this.type === 'author'){
             return true;
         }
 
     }
     isAuthorOrUser(){
-        if(this.usertype === 'streamer' || this.usertype === 'author'){
+        if(this.type === 'student' || this.type === 'author'){
             return true;
         }
 

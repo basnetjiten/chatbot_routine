@@ -13,13 +13,13 @@
                     @csrf
                     <div class="card-body">
                         <div class="form-group row">
-                            <label for="usernameInput">{{ __('Username') }}</label>
+                            <label for="nameInput">{{ __('Name') }}</label>
 
 
-                            <input id="usernameInput" type="text" class="form-control" name="username"
-                                   value="{{ old('username') }}" autocomplete="username" autofocus>
+                            <input id="nameInput" type="text" class="form-control" name="name"
+                                   value="{{ old('name') }}" autocomplete="name" autofocus>
 
-                            <span class="invalid-feedback" role="alert" id="usernameError">
+                            <span class="invalid-feedback" role="alert" id="nameError">
                                 <strong></strong>
                             </span>
 
@@ -100,7 +100,7 @@
                                 $("#" + key + "Error").children("strong").text(errors[key][0]);
                             });
                         } else {
-                          window.location.reload();
+                         // window.location.reload();
                         }
                     }
                 })

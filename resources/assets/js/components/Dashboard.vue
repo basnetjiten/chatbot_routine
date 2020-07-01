@@ -1,147 +1,226 @@
 <template>
     <div class="container">
-        <div class="row mt-5">
-            <div class="col">
-                <h1 class="text-center">Donation Cash Flow</h1>
-            </div>
-        </div>
-        <div class="row mt-5" v-if="arrPositive.length > 0">
-            <div class="col">
-
-                <line-chart
-                        :chartData="arrPositive"
-                        :options="chartOptions"
-                        :chartColors="positiveChartColors"
-                        label="Rs"
-                />
-            </div>
-        </div>
-
-        <div class="row mt-5" v-if="$gate.isAuthorOrUser() && loading && noDonors">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header ">
-                        <h3 class="card-title">Transaction Details</h3>
-
+        <div class="row">
+            <section class="content-header">
+                <div class="container-fluid">
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <h1>Routine</h1>
+                        </div>
                     </div>
-                    <!-- /.card-header -->
-                    <div class="card-body table-responsive p-0">
-                        <table class="table table-hover">
-                            <tbody>
+                </div><!-- /.container-fluid -->
+            </section>
+
+            <div class="col-12 mt-2">
+                <div class="col-12 mt-2">
+                    <div class="card card-primary direct-chat direct-chat-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Routine Request Chat</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-toggle="tooltip" title="Contacts"
+                                        data-widget="chat-pane-toggle">
+                                    <i class="fas fa-comments"></i>
+                                </button>
+                                <button type="button" class="btn btn-tool" data-widget="remove"><i
+                                        class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
 
 
-                            <tr v-for="user in users.data" :key="user.id">
+                            <div class="direct-chat-messages">
 
-
-                                <td>
-                                    <div>
-                                        <b>
-                                            {{user.name}}
-                                        </b>
-                                        donated
-                                        <b>
-                                            Rs. {{user.amount}}
-                                        </b>
+                                <div class="direct-chat-msg" v-for="(message) in messages">
+                                    <div class="direct-chat-infos clearfix">
+                                        <span class="direct-chat-name float-left">{{ message.user.name }}</span>
+                                        <span class="direct-chat-timestamp float-right">{{messageDate}}</span>
                                     </div>
-                                    <div class="mt-2">
-                                        {{user.message}}
+                                    <!--
+                                                                        <img class="direct-chat-img" src="/img/bg-img/bc1.jpg" alt="message user image">
+                                    -->
+
+                                    <div class="direct-chat-text">
+                                        {{ message.message }}
                                     </div>
-                                </td>
+                                </div>
 
 
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.card-body -->
-                    <div class="card-footer">
-                        <pagination :data="users" @pagination-change-page="getResults"></pagination>
+                            </div>
+
+                        </div>
+                        <div class="card-footer">
+                            <input @keydown="sendTypingEvent"
+                                   @keyup.enter="sendMessage"
+                                   v-model="newMessage"
+                                   type="text"
+                                   name="message"
+                                   placeholder="Enter your message..."
+                                   class="form-control">
+                            <!--<form action="#" method="post">
+                                <div class="input-group">
+
+                                    <span class="input-group-append">
+              <button type="button" class="btn btn-primary">Send</button>
+            </span>
+                                </div>
+                            </form>-->
+                        </div>
                     </div>
                 </div>
-                <!-- /.card -->
             </div>
+            <div class="col-12 mt-2">
+                <div class="callout callout-info">
+                    <h5><i class="fas fa-info"></i> Note:</h5>
+                    Your requested routine will appear here
+                </div>
+            </div>
+            <div class="col-12">
+
+                <!-- Main content -->
+                <div class="invoice p-3 mb-3">
+                    <!-- title row -->
+                    <div class="row">
+                        <div class="col-12">
+                            <h4>
+                                <i class="fa fa-globe"></i> Islington.
+                                <small class="float-right">Date: 2/10/2018</small>
+                            </h4>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+                    <!-- Table row -->
+                    <div class="row">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead >
+                                <tr>
+                                    <th>Day</th>
+                                    <th>Time</th>
+                                    <th style="width: 10%">Class Type</th>
+                                    <th style="width: 16%">Module Code</th>
+                                    <th>Module Title</th>
+                                    <th>Lecturer</th>
+                                    <th>Group</th>
+                                    <th>Block</th>
+                                    <th>Room</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{routine.day}}</td>
+                                    <td>{{routine.time}}</td>
+                                    <td>{{routine.class_type}}</td>
+                                    <td>{{routine.module_code}}</td>
+                                    <td>{{routine.module_title}}</td>
+                                    <td>{{routine.lecturer}}</td>
+                                    <td>{{routine.group}}</td>
+                                    <td>{{routine.block}}</td>
+                                    <td>{{routine.room}}</td>
+
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+
+
+                </div>
+                <!-- /.invoice -->
+            </div>
+
+
         </div>
-
-
     </div>
 </template>
 
 <script>
-    import moment from "moment";
-    import LineChart from './LineChart.vue';
 
     export default {
-        components: {
-            LineChart
-        },
+
         data() {
             return {
-                noDonors: false,
-                loading: false,
-                users: {},
-                transactions: [],
-                arrPositive: [],
+                user: [],
+                routine: [],
+                messageDate: '',
 
-                positiveChartColors: {
-                    borderColor: "#007bff",
-                    pointBorderColor: "#0E1428",
-                    pointBackgroundColor: "#AFD6AC",
-                    backgroundColor: ""
-                },
-
-                chartOptions: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    legend: false
-                }
+                /* day: '',
+                 time: '',
+                 class_type: '',
+                 module_code: '',
+                 module_title: '',
+                 lecturer: '',
+                 group: '',
+                 block: '',
+                 room: '',*/
+                messages: [],
+                newMessage: '',
+                activeUser: false,
+                typingTimer: false,
             };
         },
+        mounted() {
+           // console.log(window.user);
+            this.user= window.user;
 
-        async created() {
+        },
 
+        created() {
 
-            axios.get("transaction").then(({data}) => {
-                    console.log(data.length > 0);
-                    if (data.length === 0) {
-                        this.arrPositive.push({date: 0, y: 0});
-                    } else {
-
-                        data.forEach(d => {
-                            const date = moment(d.created_at, "YYYYMMDD").format("MM/DD");
-                            this.arrPositive.push({date, total: Number(d.amount)});
-
-                        });
-                        this.loadDonors();
-                        this.loading = true;
-                        this.noDonors=true;
-                    }
+            this.fetchMessages();
+            this.fetchMyRoutine();
 
 
-                }
-            )
-            ;
+            window.Echo.channel('pchat' + window.user.id).listen('ChatEvent', (event) => {
 
+                this.routine = event.chat;
+            });
 
         },
         methods: {
-            loadDonors() {
-                if (this.$gate.isAuthorOrUser()) {
-                    axios.get("donors").then(({data}) => {
-                        this.users = data
-                    });
-                }
+
+            fetchMyRoutine() {
+                axios.post('myroutine', {id: window.user.id}).then(response => {
+                    this.routine = response.data;
+                    moment.locale('en');
+
+                    var date = moment(this.routine.created_at);
+
+
+                    var dt = moment(date, "YYYY-MM-DD HH:mm:ss");
+
+                    this.messageDate = dt.format('MMM DD HH:mm a');
+                })
+            },
+            fetchMessages() {
+                axios.post('fetchMessage',{id:window.user.id}).then(response => {
+                    this.messages = response.data;
+
+
+                })
+            },
+            sendMessage() {
+                this.messages.push({
+                    user: window.user,
+                    message: this.newMessage
+                });
+                axios.post('messages', {message: this.newMessage, id: 1});
+                this.newMessage = '';
+            },
+            sendTypingEvent() {
+                /*window.Echo.join('chat')
+                    .whisper('typing', this.user);*/
+                //console.log(this.user.username + ' is typing now')
             }
-            ,
-            getResults(page = 1) {
-                axios.get('donors?page=' + page)
-                    .then(response => {
-                        this.users = response.data;
-                    });
-            }
-            ,
+
         }
     }
-    ;
 </script>
 
 <style scoped>
@@ -149,5 +228,7 @@
         overflow-y: auto;
 
     }
+
+
 </style>
 

@@ -9,10 +9,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-    <title>StreamersAlert | bonding viewers & streamers</title>
+    <title>College Project | fyp project</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -50,7 +49,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <a href="index3.html" class="brand-link">
             <img src="./img/logo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
                  style="opacity: .8">
-            <span class="brand-text font-weight-light">StreamersAlert</span>
+            <span class="brand-text font-weight-light">College Project</span>
         </a>
 
         <!-- Sidebar -->
@@ -58,13 +57,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
 
-                <div class="image">
-                    <img src="{{asset('img/profile/'.Auth::user()->photo)
-     }}" class="img-circle elevation-2" alt="User Image">
-                </div>
+                {{-- <div class="image">
+                     <img src="{{asset('img/profile/'.Auth::user()->photo)
+      }}" class="img-circle elevation-2" alt="User Image">
+                 </div>--}}
                 <div class="info">
                     <a href="#" class="d-block">
-                        {{Auth::user()->username}}
+                        {{Auth::user()->name}}
                         <span class="right badge badge-success">{{Auth::user()->type}}</span>
                     </a>
                 </div>
@@ -77,54 +76,59 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     <!-- Add icons to the links using the .nav-icon class
                          with font-awesome or any other icon font library -->
 
-                    <li class="nav-item">
-                        <router-link to="/dashboard" tag="a" class="nav-link" active-class="active" exact>
-                            <i class="nav-icon fas fa-tachometer-alt white"></i>
-                            <p>
-                                Dashboard
-
-                            </p>
-                        </router-link>
-                    </li>
-
-                    @can('isAdmin')
-                        <li class="nav-item has-treeview">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fa fa-cog green"></i>
-                                <p>
-                                    Management
-                                    <i class="right fa fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <router-link to="/users" tag="a" class="nav-link"  active-class="active" exact>
-                                        <i class="fas fa-users nav-icon"></i>
-                                        <p>Users</p>
-                                    </router-link>
-                                </li>
-
-                            </ul>
-                        </li>
-
+                    @can('isStudent')
                         <li class="nav-item">
-                            <router-link to="/developer" tag="a" class="nav-link"  active-class="active" exact>
-                                <i class="nav-icon fas fa-cogs"></i>
-                                <p>
-                                    Developer
-                                </p>
+                            <router-link to="/dashboard"
+                                         tag="a" class="nav-link" active-class="active" exact>
+                                <i class="nav-icon fas fa-tachometer-alt white"></i>
+                                <p>Dashboard</p>
                             </router-link>
                         </li>
                     @endcan
-                    <li class="nav-item">
-                        <router-link to="/profile" tag="a" class="nav-link" active-class="active" exact>
-                            <i class="nav-icon fas fa-user orange"></i>
-                            <p>
-                                Profile
-                            </p>
-                        </router-link>
-                    </li>
 
+
+                    @can('isAdmin')
+
+                        <li class="nav-item">
+                            <router-link to="/users" tag="a" class="nav-link" active-class="active" exact>
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>Students</p>
+                            </router-link>
+                        </li>
+
+
+                    @endcan
+
+
+                    @can('isAdmin')
+
+                        <li class="nav-item">
+                            <router-link :to="{name: 'message', params: { user: {{ json_encode(Auth::user()) }}} }"
+                                         tag="a" class="nav-link" active-class="active" exact>
+                                <i class="nav-icon fas fa-inbox white"></i>
+                                <p>
+                                    Inbox Message
+
+                                </p>
+                            </router-link>
+                        </li>
+
+
+                    @endcan
+
+
+
+                    @can('isAdmin')
+                        <li class="nav-item">
+                            <router-link to="/routine" tag="a" class="nav-link" active-class="active" exact>
+                                <i class="nav-icon fas fa-book orange"></i>
+                                <p>
+                                    Add Routine
+                                </p>
+                            </router-link>
+                        </li>
+
+                    @endcan
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
@@ -166,7 +170,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <footer class="main-footer">
 
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2019-2020 <a href="https://adminlte.io">StreamersAlert.com</a>.</strong> All rights
+        <strong>Copyright &copy; 2019-2020 <a href="https://www.google.com">Google.com</a>.</strong> All
+        rights
         reserved.
     </footer>
 </div>
@@ -174,7 +179,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 @auth
     <script>
-        window.usertype = @json(auth()->user()->type);
+        window.user = @json(auth()->user());
 
 
     </script>
