@@ -87,7 +87,6 @@
                         <div class="col-12">
                             <h4>
                                 <i class="fa fa-globe"></i> Islington.
-                                <small class="float-right">Date: 2/10/2018</small>
                             </h4>
                         </div>
                         <!-- /.col -->

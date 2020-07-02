@@ -2066,7 +2066,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -71819,10 +71818,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "col-12" }, [
         _c("h4", [
           _c("i", { staticClass: "fa fa-globe" }),
-          _vm._v(" Islington.\n                            "),
-          _c("small", { staticClass: "float-right" }, [
-            _vm._v("Date: 2/10/2018")
-          ])
+          _vm._v(" Islington.\n                        ")
         ])
       ])
     ])
